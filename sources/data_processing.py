@@ -1,6 +1,7 @@
 import pandas as pd
+
 # Load the CSV
-df = pd.read_csv('../Data/CarPrice.csv')
+df = pd.read_csv('FordPrices.csv')
 
 #Clean and Preprocess Data
 print("Cleaning and processing data")
@@ -17,27 +18,35 @@ print(df.dtypes)
 print("\nChecking for unique values")
 print(df.nunique().sum())
 
-#Check statistics
-print("\nPrinting Statistics")
-#Keeps the year column in string format
-df['Year'] = df['Year'].astype(str)
+# Print statistics
+print("\n Printing Statistics")
 
-#Generate statistics
-stats = df[['Year', 'Selling_Price', 'KM_Driven']].copy()
-stats['Year'] = df['Year'].astype(int)
+# Keep 'year' column as string for presentation
+df['year'] = df['year'].astype(str)
 
+# Generate subset and convert 'year' back to int for calculations
+stats = df[['year', 'price', 'mileage']].copy()
+stats['year'] = stats['year'].astype(int)
+
+# Generate raw summary
 summary = stats.describe()
 
-#Format numeric values with commas and 2 decimals
+# Format numeric values with commas and appropriate decimals
 formatted_stats = summary.copy()
-for col in ['Year', 'Selling_Price', 'KM_Driven']:
-    formatted_stats[col] = formatted_stats[col].map(lambda x: f"{int(x):,}" if col == 'Year' else f"{x:,.2f}")
+for col in ['year', 'price', 'mileage']:
+    if col == 'year':
+        formatted_stats[col] = formatted_stats[col].map(lambda x: f"{int(x):,}")
+    elif col == 'price':
+        formatted_stats[col] = formatted_stats[col].map(lambda x: f"${x:,.2f}")
+    else:
+        formatted_stats[col] = formatted_stats[col].map(lambda x: f"{x:,.2f} Miles")
 
-# Print the formatted table
-print("\nFormatted Car Statistics (with Year as string):\n")
+# Print final formatted table
+print("\n Formatted Car Statistics (with Year as whole number):\n")
 print(formatted_stats)
 
+
 # Preview the data
-#print(df.to_string())
+#(df.to_string())
 
 
