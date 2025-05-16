@@ -56,7 +56,7 @@ def train_model(df: pd.DataFrame, model_type: str = "linear"):
 
     y_pred = pipeline.predict(X_test)
 
-    print(f"\n📈{model_type.replace('_', ' ').title()} Model Statistics:")
+    print(f"\n📈{model_type.replace('_', ' ').title()} Model Performance Metrics:")
     print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
     print(f"Mean of Absolute Errors (MAE): ${mean_absolute_error(y_test, y_pred):,.2f}")
     print(f"Root of the Mean of Square Errors (RMSE): ${np.sqrt(mean_squared_error(y_test, y_pred)):.2f}")
