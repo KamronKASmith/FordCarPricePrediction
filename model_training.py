@@ -48,12 +48,10 @@ def build_pipeline(X: pd.DataFrame, model_type: str = "linear") -> Pipeline:
 def train_model(df: pd.DataFrame, model_type: str = "linear"):
     X = df.drop(columns='price')
     y = df['price']
-
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     pipeline = build_pipeline(X, model_type)
     pipeline.fit(X_train, y_train)
-
     y_pred = pipeline.predict(X_test)
 
     print(f"\n📈{model_type.replace('_', ' ').title()} Model Performance Metrics:")
@@ -62,4 +60,4 @@ def train_model(df: pd.DataFrame, model_type: str = "linear"):
     print(f"Root of the Mean of Square Errors (RMSE): ${np.sqrt(mean_squared_error(y_test, y_pred)):.2f}")
     #print(f"\n💸 Predicted Price for Sample Car using the {model_type.replace('_', ' ').title()} Model: ${prediction[0]:,.2f}")
 
-    return pipeline
+    return pipeline, y_test, y_pred

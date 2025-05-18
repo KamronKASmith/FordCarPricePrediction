@@ -65,8 +65,6 @@ def get_user_input():
         'engineSize': engineSize
     }])
 
-
-
 model_list = {
     "linear": "Linear Regression",
     "ridge": "Ridge Regression",
@@ -88,7 +86,6 @@ model_options = {
     "8": "all",
     "0": "exit"
 }
-
 
 def select_models():
     print("📊 Select model(s) for prediction:")
