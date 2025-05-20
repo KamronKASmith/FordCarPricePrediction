@@ -12,7 +12,7 @@ st.set_page_config(page_title="Ford Price Predictor", layout="wide")
 #Loads Datasheet
 @st.cache_data
 def load_data():
-    df = pd.read_csv("Sources/FordPrices.csv")
+    df = pd.read_csv("src/FordPrices.csv")
     return df
 
 df = load_data()

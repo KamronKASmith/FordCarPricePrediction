@@ -131,7 +131,7 @@ def select_models():
 
 def main():
     #Loads the data sheet for all functions that need them
-    df = pd.read_csv('Sources/FordPrices.csv')
+    df = pd.read_csv('src/FordPrices.csv')
 
     #Calls introduction function
     intro()
