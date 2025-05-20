@@ -45,19 +45,18 @@ def build_pipeline(X: pd.DataFrame, model_type: str = "linear") -> Pipeline:
     return pipeline
 
 #Trains the model selected with hyperparameters
-def train_model(df: pd.DataFrame, model_type: str = "linear"):
+def train_model(df, model_type):
     X = df.drop(columns='price')
     y = df['price']
+
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
     pipeline = build_pipeline(X, model_type)
     pipeline.fit(X_train, y_train)
     y_pred = pipeline.predict(X_test)
 
-    print(f"\n📈{model_type.replace('_', ' ').title()} Model Performance Metrics:")
-    print(f"R² Score: {r2_score(y_test, y_pred):.4f}")
-    print(f"Mean of Absolute Errors (MAE): ${mean_absolute_error(y_test, y_pred):,.2f}")
-    print(f"Root of the Mean of Square Errors (RMSE): ${np.sqrt(mean_squared_error(y_test, y_pred)):.2f}")
-    #print(f"\n💸 Predicted Price for Sample Car using the {model_type.replace('_', ' ').title()} Model: ${prediction[0]:,.2f}")
-
-    return pipeline, y_test, y_pred
+    return {
+        'pipeline': pipeline,
+        'y_test': y_test,
+        'y_pred': y_pred
+    }

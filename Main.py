@@ -1,5 +1,6 @@
 import pandas as pd
 from model_training import train_model
+from sklearn.metrics import r2_score, mean_absolute_error, root_mean_squared_error
 
 #Introduction
 def intro():
@@ -11,7 +12,7 @@ def intro():
     print("This program used up to 7 Machine Learning Models to accurately estimate the market value of a wsed Ford vehicle.\n")
     input("Press ENTER to begin entering car details...\n")
 
-#Functions that list unique values from the datasheet to gather testing parameters
+#List all cars available
 def fleet(df):
     print("🛒 Ford Models Available:")
 
@@ -22,12 +23,14 @@ def fleet(df):
     for i, model in enumerate(unique_models, start=1):
         print(f"{i:>2}. {model}")
 
+#Lists all tax brackets available (Didn't use, stated options in the prompt)
 def taxbracket(df):
     print("💸 Available Road Tax Values in Dataset:\n")
     unique_taxes = sorted(df['tax'].dropna().unique())
     for i, tax in enumerate(unique_taxes, start=1):
         print(f"{i:>2}. ${tax}")
 
+#Lists all MPG options available (Didn't use, stated options in the prompt)
 def MPG(df):
     print("⛽ Available MPG Values in Dataset:\n")
     unique_mpg = sorted(df['mpg'].dropna().unique())
@@ -35,6 +38,7 @@ def MPG(df):
         print(f"{i:>2}. {mpg:.1f} MPG")
     print(f"\n🔢 Total unique MPG values: {len(unique_mpg)}\n")
 
+#Lists all engine sizes available (Didn't use, stated options in the prompt)
 def list_unique_engine_sizes(df):
     print("🔧 Available Engine Sizes in Dataset:\n")
     unique_engines = sorted(df['engineSize'].dropna().unique())
@@ -54,6 +58,7 @@ def get_user_input():
     engineSize = float(input("From 1.0 to a 5.0, what sized engine does it have? ").strip())
 
     print("\nOkay, Let's see what price you're looking at...\n")
+    #Stores user input
     return pd.DataFrame([{
         'model': model,
         'year': year,
@@ -65,6 +70,7 @@ def get_user_input():
         'engineSize': engineSize
     }])
 
+#List of Machine Learning models available
 model_list = {
     "linear": "Linear Regression",
     "ridge": "Ridge Regression",
@@ -75,6 +81,7 @@ model_list = {
     "light": "LightGBM Regressor"
 }
 
+#Machine learning model codes from CLI
 model_options = {
     "1": "linear",
     "2": "ridge",
@@ -87,6 +94,7 @@ model_options = {
     "0": "exit"
 }
 
+#Select Model function for CLI
 def select_models():
     print("📊 Select model(s) for prediction:")
     for key, code in model_options.items():
@@ -99,30 +107,36 @@ def select_models():
 
     selection = input("\nEnter numbers separated by commas (e.g. 1,3,5), or '8' for all, '0' to exit: ").strip().lower()
 
+    #Exit option
     if "0" in selection:
         print("\n👋 Exiting Ford Price Predictor. Goodbye!\n")
         exit()
 
+    #Select all model option
     if "8" in selection or "all" in selection:
         return list(model_list.keys())  # all real model types
 
-    # Parse multi-select
+    #Multiple model selection function
     entries = selection.split(',')
     selected = [model_options.get(num.strip()) for num in entries if
                 num.strip() in model_options and model_options[num.strip()] not in ("all", "exit")]
 
+    #Throw user error
     if not selected:
         print("\n❗ Invalid selection, please try again.\n")
+        #Restart model selection prompt
         return select_models()
 
     return selected
-
 
 def main():
     #Loads the data sheet for all functions that need them
     df = pd.read_csv('Sources/FordPrices.csv')
 
+    #Calls introduction function
     intro()
+
+    #Calls function to list all available cars
     fleet(df)
 
     #Stores the users input into a data frame
@@ -136,14 +150,32 @@ def main():
 
     print("🔍 Select one or more models to use for prediction:")
 
+    #Retreives user input for prediction
     selected_models = select_models()
 
     print("\n⚙️ Training models and generating predictions...")
 
+
+    #Calls model training, parses user inputs, calculates performance metrics
     for model_type in selected_models:
-        model = train_model(df, model_type)
-        prediction = model.predict(sample)[0]
+        result = train_model(df, model_type)  # returns a dict
+        pipeline = result["pipeline"]  # extract the pipeline
+        y_test = result["y_test"]
+        y_pred = result["y_pred"]
+
+        #Makes Prediction
+        prediction = pipeline.predict(sample)[0]
         print(f"\n💰 Predicted Price using {model_list[model_type]} model: ${prediction:,.2f}")
+
+        # Performance Metrics
+        r2 = r2_score(y_test, y_pred)
+        mae = mean_absolute_error(y_test, y_pred)
+        rmse = root_mean_squared_error(y_test, y_pred)
+
+        print(f"\n📈 {model_list[model_type]} Model Performance Metrics:")
+        print(f"R² Score: {r2:.4f}")
+        print(f"Mean of Absolute Errors (MAE): ${mae:,.2f}")
+        print(f"Root of the Mean of Square Errors (RMSE): ${rmse:,.2f}")
 
     print("\n🎯 Thank you for using the Ford Price Predictor!\n")
 

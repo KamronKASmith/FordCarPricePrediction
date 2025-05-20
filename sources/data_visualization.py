@@ -1,9 +1,11 @@
 import matplotlib.pyplot as plt
 import pandas as pd
 
+#Loads CSV
 df = pd.read_csv("FordPrices.csv")
 
-def plot_price_distribution(df):
+#Price vs Car Count Graph
+def plot_price_vs_carcount(df):
     plt.figure(figsize=(10, 6))
     plt.hist(df['price'], bins=50, color='skyblue', edgecolor='black')
     plt.title("Distribution of Car Prices")
@@ -13,6 +15,7 @@ def plot_price_distribution(df):
     plt.tight_layout()
     plt.show()
 
+#Price vs Mileage Graph
 def plot_price_vs_mileage(df):
     plt.figure(figsize=(10, 6))
     plt.scatter(df['mileage'], df['price'], alpha=0.5, color='tomato')
@@ -23,6 +26,7 @@ def plot_price_vs_mileage(df):
     plt.tight_layout()
     plt.show()
 
+#Price per model Graph
 def plot_price_by_model(df):
     top_models = df['model'].value_counts().nlargest(10).index
     filtered_df = df[df['model'].isin(top_models)]
@@ -37,6 +41,7 @@ def plot_price_by_model(df):
     plt.tight_layout()
     plt.grid(True)
 
+#Car Model vs Model Count Graph
 def plot_model_counts(df):
     model_counts = df['model'].value_counts()
 
@@ -51,6 +56,7 @@ def plot_model_counts(df):
     plt.grid(axis='y')
     plt.show()
 
+#Price vs Year Graph
 def plot_year_vs_price(df):
     df_clean = df[['year', 'price']].dropna()
 
@@ -63,7 +69,7 @@ def plot_year_vs_price(df):
     plt.tight_layout()
     plt.show()
 
-
+#Year vs Mileage Graph
 def plot_year_vs_mileage(df):
     plt.figure(figsize=(10, 6))
     plt.scatter(df['year'], df['mileage'], alpha=0.5, color='mediumseagreen')
@@ -74,6 +80,7 @@ def plot_year_vs_mileage(df):
     plt.tight_layout()
     plt.show()
 
+#MPG vs Fuel Type Graph
 def plot_avg_mpg_by_fuel(df):
     plt.figure(figsize=(10, 6), facecolor='white')
 
@@ -88,6 +95,7 @@ def plot_avg_mpg_by_fuel(df):
     plt.grid(axis='y')
     plt.show()
 
+#Transmission vs Count Graph
 def plot_transmission_counts(df):
     plt.figure(figsize=(8, 5), facecolor='white')
 
@@ -104,6 +112,7 @@ def plot_transmission_counts(df):
     plt.grid(axis='y')
     plt.show()
 
+#Price vs Engine Size Graph
 def plot_engine_size_vs_price(df):
     df_clean = df[['engineSize', 'price']].dropna()
 
@@ -116,6 +125,7 @@ def plot_engine_size_vs_price(df):
     plt.tight_layout()
     plt.show()
 
+#Sales tax vs Engine Size Graph
 def plot_tax_vs_engine_size(df):
     df_clean = df[['tax', 'engineSize']].dropna()
 
@@ -129,6 +139,8 @@ def plot_tax_vs_engine_size(df):
     plt.tight_layout()
     plt.show()
 
+
+#Sales tax vs Model Year Graph
 def plot_tax_vs_year(df):
     df_clean = df[['year', 'tax']].dropna()
 
@@ -142,7 +154,8 @@ def plot_tax_vs_year(df):
     plt.tight_layout()
     plt.show()
 
-plot_price_distribution(df)
+#Plots all Graphs
+plot_price_vs_carcount(df)
 plot_year_vs_price(df)
 plot_year_vs_mileage(df)
 plot_price_vs_mileage(df)

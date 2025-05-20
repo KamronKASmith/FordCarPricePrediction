@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f463cf45-8124-4011-a585-70d6275b0496" name="Changes" comment="Added Data Visualization, Graphs to see trends and decipher variables that influence price">
-      <change afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
+    <list default="true" id="f463cf45-8124-4011-a585-70d6275b0496" name="Changes" comment="Added Streamlit UI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UI.py" beforeDir="false" afterPath="$PROJECT_DIR$/UI.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/model_training.py" beforeDir="false" afterPath="$PROJECT_DIR$/model_training.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sources/data_visualization.py" beforeDir="false" afterPath="$PROJECT_DIR$/sources/data_visualization.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,6 +92,36 @@
       <recent name="C:\Users\kamro\PycharmProjects\DSCarPricePrediction\Data" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="DSCarPricePrediction" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -113,7 +144,7 @@
       <workItem from="1747259204958" duration="23743000" />
       <workItem from="1747399186091" duration="17771000" />
       <workItem from="1747425865963" duration="13000" />
-      <workItem from="1747426502375" duration="4584000" />
+      <workItem from="1747426502375" duration="15149000" />
     </task>
     <task id="LOCAL-00001" summary="Added CLI and User Inputs">
       <option name="closed" value="true" />
@@ -131,7 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747358520538</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Added Streamlit UI">
+      <option name="closed" value="true" />
+      <created>1747545704111</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1747545704111</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Streamlit UI">
+      <option name="closed" value="true" />
+      <created>1747545770656</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1747545770656</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -140,17 +187,18 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Added CLI and User Inputs" />
     <MESSAGE value="Added Data Visualization, Graphs to see trends and decipher variables that influence price" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Data Visualization, Graphs to see trends and decipher variables that influence price" />
+    <MESSAGE value="Added Streamlit UI" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Streamlit UI" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$data_processing.coverage" NAME="data_processing Coverage Results" MODIFIED="1747270496677" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sources" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$datacharts.coverage" NAME="datacharts Coverage Results" MODIFIED="1747269064425" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DSCarPricePrediction$data_visualization.coverage" NAME="data_visualization Coverage Results" MODIFIED="1747425395655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sources" />
+    <SUITE FILE_PATH="coverage/DSCarPricePrediction$data_visualization.coverage" NAME="data_visualization Coverage Results" MODIFIED="1747700212341" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sources" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$Data_Preprocessing.coverage" NAME="Data_Preprocessing Coverage Results" MODIFIED="1747165308236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Sources" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$UI.coverage" NAME="UI Coverage Results" MODIFIED="1747268428510" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$CLI.coverage" NAME="CLI Coverage Results" MODIFIED="1747259909807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$app.coverage" NAME="app Coverage Results" MODIFIED="1747412874084" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/DSCarPricePrediction$Main.coverage" NAME="Main Coverage Results" MODIFIED="1747542885113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/DSCarPricePrediction$Main.coverage" NAME="Main Coverage Results" MODIFIED="1747695715418" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$model_training.coverage" NAME="model_training Coverage Results" MODIFIED="1747274574609" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/DSCarPricePrediction$CarPrice_Prediction.coverage" NAME="CarPrice Prediction Coverage Results" MODIFIED="1747165112077" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
