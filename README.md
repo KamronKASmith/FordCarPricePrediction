@@ -75,7 +75,7 @@ Car Price Prediction https://www.kaggle.com/code/mohaiminul101/car-price-predict
 🚙Used Car💸Price 🚗Prediction📈 https://www.kaggle.com/code/satyaprakashshukl/used-car-price-prediction<br>
 
 > Coding Notes:<br>
-cd C:\Users\kamro\PycharmProjects\DSCarPricePrediction
+cd C:\Users\kamro\PycharmProjects\DSCarPricePrediction<br>
 streamlit run ui.py
 
 
